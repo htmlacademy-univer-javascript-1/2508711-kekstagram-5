@@ -33,6 +33,8 @@ function showMessage(template) {
   }
 
   function closeMessage() {
+    messageElement.style.visibility = 'hidden';
+    messageElement.style.position = 'absolute';
     messageElement.remove();
     document.removeEventListener('keydown', onMessageKeydown);
   }

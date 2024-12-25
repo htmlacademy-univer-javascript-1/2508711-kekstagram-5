@@ -24,9 +24,14 @@ function closeUploadForm() {
   form.reset();
   pristine.reset();
   uploadOverlay.classList.add('hidden');
+  uploadOverlay.style.display = 'none';
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   resetForm();
+
+  setTimeout(() => {
+    uploadOverlay.style.display = '';
+  }, 100);
 }
 
 function onDocumentKeydown(evt) {
@@ -82,6 +87,8 @@ hashtagsInput.addEventListener('input', () => {
 
 function openUploadForm() {
   uploadOverlay.classList.remove('hidden');
+  uploadOverlay.style.opacity = '1';
+  uploadOverlay.style.pointerEvents = 'auto';
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
