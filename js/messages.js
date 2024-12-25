@@ -17,6 +17,12 @@ function showMessage(template) {
 
   document.addEventListener('keydown', onMessageKeydown);
 
+  messageElement.addEventListener('click', (evt) => {
+    if (!evt.target.closest('.success__inner, .error__inner')) {
+      closeMessage();
+    }
+  });
+
   messageElement.querySelector('.success__button, .error__button').addEventListener('click', closeMessage);
 
   function onMessageKeydown(evt) {
