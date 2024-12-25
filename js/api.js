@@ -15,6 +15,17 @@ const getData = async () => {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Ошибка при загрузке данных:', error);
+    const errorElement = document.createElement('div');
+    errorElement.className = 'data-error';
+    errorElement.innerHTML = `
+      <p>Ошибка загрузки данных. Пожалуйста, попробуйте позже.</p>
+      <button class="data-error__close">×</button>
+    `;
+    document.body.appendChild(errorElement);
+    const closeButton = errorElement.querySelector('.data-error__close');
+    closeButton.addEventListener('click', () => {
+      errorElement.remove();
+    });
     throw error;
   }
 };
